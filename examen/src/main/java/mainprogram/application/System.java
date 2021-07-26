@@ -2,22 +2,24 @@ package mainprogram.application;
 
 
 import mainprogram.application.database.CentroDatabase;
+import mainprogram.application.database.UserDatabase;
 import mainprogram.classes.Usuario;
 
-import java.text.MessageFormat;
 import java.util.logging.Logger;
 
 public class System {
-    static System instance;
-    static LoginSystem loginInstance = LoginSystem.getInstance();
-    static CentroDatabase centroDatabase = CentroDatabase.getInstance();
     static Logger logger = Logger.getLogger(System.class.getName());
 
-    private System(){
+    private final LoginSystem loginSystem;
+    private final  CentroDatabase centroDatabase;
+
+    public System(CentroDatabase centroDatabase , LoginSystem loginSystem) {
+        this.centroDatabase = centroDatabase;
+        this.loginSystem = loginSystem;
     }
 
     private Integer showAvanceVacunacion(){
-        int suma=0;
+        var suma=0;
         for(var i = 0 ; i < centroDatabase.centros.size() ;i++){
             if(centroDatabase.centros.get(i).isStatus()){
                 suma = suma + centroDatabase.centros.get(i).getCantidadvacunados();
@@ -27,23 +29,16 @@ public class System {
     }
 
 
-    public static synchronized System getInstance() {
-        if (instance == null) {
-            instance = new System();
-        }
-        return instance;
-    }
-
-    public void showAndSelectoption(int option){
-        logger.info("Mostrando opciones: ");
+    public void showAndSelectoption(int option, Usuario user){
+        logger.info("Mostrando opciones");
         logger.info("1 ---> Ver Toda la informacion");
-        logger.info("2 ---> Dar de alta a centro de vacunacion" );
-        logger.info("3 ---> Dar de baja a centro de vacunacion" );
-        logger.info("4 ---> Cerrar sesion" );
+        logger.info("2 ---> Dar de alta a centro de vacunacion");
+        logger.info("3 ---> Dar de baja a centro de vacunacion");
+        logger.info("4 ---> Cerrar sesion");
 
         switch (option){
             case 1:
-                logger.info("Cantidad de vacunados " + String.format("%d", showAvanceVacunacion()));
+                logger.info(()->"Cantidad de vacunados " +  showAvanceVacunacion());
                 break;
             case 2:
 
@@ -51,6 +46,8 @@ public class System {
             case 3:
                 break;
             case 4:
+                logger.info(()->"Cerrar sesion");
+                logout(user);
                 break;
             default:
                 break;
@@ -59,7 +56,7 @@ public class System {
 
     }
     public void logout(Usuario user){
-        loginInstance.remove(user);
+        loginSystem.remove(user);
     }
 
 }

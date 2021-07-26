@@ -4,6 +4,7 @@ package mainprogram;
 import mainprogram.application.Centro;
 import mainprogram.application.LoginSystem;
 import mainprogram.application.System;
+import mainprogram.application.database.CentroDatabase;
 import mainprogram.application.database.UserDatabase;
 import mainprogram.classes.Usuario;
 
@@ -17,17 +18,23 @@ public class Main {
     public static void main(String[] args) {
         var userDatabase = UserDatabase.getInstance();
         var loginSystem = LoginSystem.getInstance();
-        var system = System.getInstance();
-
+        var centroDatabase = CentroDatabase.getInstance();
 
         List<Usuario> usersToLogin = new ArrayList<>();
-        List<Centro> centrosVacunacion = new ArrayList<>();
+
+        centroDatabase.add(new Centro("centro1", 1000,true));
+        centroDatabase.add(new Centro("centro2", 1000,true));
+        centroDatabase.add(new Centro("centro3", 1000,true));
+        centroDatabase.add(new Centro("centro4", 1000,true));
+        centroDatabase.add(new Centro("centro5", 1000,true));
 
         usersToLogin.add(new Usuario("Esteban","nabetsE"));
 
-        //centrosVacunacion.add(new Centro("centro1"));
 
-        //usersToLogin.add(new Usuario("Ana", "anA"));
+
+        var system = new System(centroDatabase,  loginSystem);
+
+
 
         for (Usuario usuario : usersToLogin) {
             userDatabase.add(usuario);
@@ -39,13 +46,14 @@ public class Main {
             logger.info(usuario.getUser());
             logger.info(usuario.getPassword());
             logged=loginSystem.authenticate(usuario);
-        }
-        if (logged){
-            system.showAndSelectoption(3);
+            if (logged){
+                system.showAndSelectoption(1, usuario);
 
-        }
-        else{
-            logger.info("Error en la autenticacion");
+            }
+            else{
+                logger.info("Error en la autenticacion");
+            }
+
         }
 
     }
