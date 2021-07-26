@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+examen,mainprogram.application.database,UserDatabase,4,44,2,4,1,11,2,5,0,4
+examen,mainprogram.classes,Usuario,0,15,0,0,0,6,0,3,0,3
+examen,mainprogram,Main,3,64,0,4,1,16,1,4,1,2
+examen,mainprogram.application,LoginSystem,2,38,3,3,1,11,3,4,0,4
+examen,mainprogram.application,System,3,0,0,0,1,0,1,0,1,0
