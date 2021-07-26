@@ -1,6 +1,7 @@
 package mainprogram;
 
 
+import mainprogram.application.Centro;
 import mainprogram.application.LoginSystem;
 import mainprogram.application.System;
 import mainprogram.application.database.UserDatabase;
@@ -20,8 +21,11 @@ public class Main {
 
 
         List<Usuario> usersToLogin = new ArrayList<>();
+        List<Centro> centrosVacunacion = new ArrayList<>();
 
         usersToLogin.add(new Usuario("Esteban","nabetsE"));
+
+        //centrosVacunacion.add(new Centro("centro1"));
 
         //usersToLogin.add(new Usuario("Ana", "anA"));
 
@@ -37,9 +41,12 @@ public class Main {
             logged=loginSystem.authenticate(usuario);
         }
         if (logged){
-            system.showoptions();
-        }
+            system.showAndSelectoption(3);
 
+        }
+        else{
+            logger.info("Error en la autenticacion");
+        }
 
     }
 }
