@@ -1,0 +1,7 @@
+organization=miunmn
+projectKey=Miunmn_finalsoftware
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.22173
+dashboardUrl=https://sonarcloud.io/dashboard?id=Miunmn_finalsoftware
+ceTaskId=AXsAngWck3a0e_0gEPkL
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AXsAngWck3a0e_0gEPkL

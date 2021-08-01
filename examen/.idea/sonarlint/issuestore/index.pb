@@ -13,7 +13,5 @@ a
 1src/main/java/mainprogram/application/Centro.java,a\c\acf293a5b1a5b98a5c041979a03d5adf92726910
 W
 'src/test/java/examen/test/MainTest.java,c\b\cbdd02569b7bece8543af1d9a392c83156007433
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 S
 #src/main/java/mainprogram/Main.java,c\f\cfe71b19b5b054c09cc72c97f8e8df9615b63f61
